@@ -17,7 +17,7 @@ const ProductScreen = ({match}) => {
     }
 
     fetchProduct()
-  }, [])
+  }, [match.params.id])
 
   return (
     <>
@@ -62,7 +62,7 @@ const ProductScreen = ({match}) => {
                     Status:
                   </Col>
                   <Col>
-                    <strong>${product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</strong>
+                    <strong>{product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</strong>
                   </Col>
                 </Row>
               </ListGroup.Item>
