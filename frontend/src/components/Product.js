@@ -2,6 +2,9 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 
+import PropTypes from 'prop-types'
+
+
 
 function Product({product}) {
   return (
@@ -30,6 +33,12 @@ function Product({product}) {
 
 Rating.defaultProps = {
   color: '#f8e825'
+}
+
+Rating.PropTypes = {
+  value: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired,
+  color: PropTypes.string,
 }
 
 export default Product
