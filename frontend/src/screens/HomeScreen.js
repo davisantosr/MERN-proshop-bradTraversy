@@ -6,13 +6,13 @@ import Product from '../components/Product'
 
 function HomeScreen() {
 
-  const [products, setProduct] = useState([])
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
     const fetchProducts = async () => {
       const {data} = await axios.get('http://localhost:5000/api/products')
 
-      setProduct(data)
+      setProducts(data)
     }
 
     fetchProducts()
