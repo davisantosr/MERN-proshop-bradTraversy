@@ -11,7 +11,7 @@ const ProductScreen = ({match}) => {
   
   return (
     <>
-      <Link className='btn btn-light my-3'>Go Back</Link>
+      <Link to={'/'} className='btn btn-light my-3'>Go Back</Link>
       <Row>
         <Col md={6}>  
           <Image src={product.image} alt={product.name} fluid/>
@@ -41,7 +41,7 @@ const ProductScreen = ({match}) => {
                     Price:
                   </Col>
                   <Col>
-                    <stron>${product.price}</stron>
+                    <strong>${product.price}</strong>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -52,7 +52,7 @@ const ProductScreen = ({match}) => {
                     Status:
                   </Col>
                   <Col>
-                    <stron>${product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</stron>
+                    <strong>${product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</strong>
                   </Col>
                 </Row>
               </ListGroup.Item>
