@@ -3,6 +3,7 @@ import cors from 'cors'
 import products from './data/products.js'
 import connectDB from './config/db.js'
 import dotenv from 'dotenv'
+import colors from 'colors'
 
 dotenv.config()
 
