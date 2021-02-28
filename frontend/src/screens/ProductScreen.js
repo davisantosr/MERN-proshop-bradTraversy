@@ -1,28 +1,31 @@
 import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import {useDispatch, useSelector} from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button} from 'react-bootstrap'
+import {listProductDetails} from '../actions/productActions'
 
 import Rating from '../components/Rating'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 const ProductScreen = ({match}) => {
+  const dispatch = useDispatch()
 
-  const [product, setProduct] =useState({})
+  const productDetails = useSelector(state => state.productDetails)
+
+  const {loading, error, product } = productDetails
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const {data} = await axios.get(`http://localhost:5000/api/products/${match.params.id}`)
+    dispatch(listProductDetails(match.params.id))
+    
+  }, [dispatch,match.params.id])
 
-      setProduct(data)
-    }
-
-    fetchProduct()
-  }, [match.params.id])
 
   return (
     <>
       <Link to={'/'} className='btn btn-light my-3'>Go Back</Link>
-      <Row>
+      {loading ? <Loader/> : error ? <Message variant={'danger'}>{error}</Message> : (
+        <Row>
         <Col md={6}>  
           <Image src={product.image} alt={product.name} fluid/>
         </Col>
@@ -74,6 +77,8 @@ const ProductScreen = ({match}) => {
           </Card>
         </Col>
       </Row>
+      )}
+      
     </>
   )
 }
