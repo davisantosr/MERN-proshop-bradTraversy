@@ -7,10 +7,7 @@ import {
   productDetailsReducer 
 } from './reducers/productReducers'
 
-import {
-  userLoginReducer
-}from './reducers/userReducers';
-
+import {userLoginReducer}from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducers'
 
 const reducer = combineReducers({

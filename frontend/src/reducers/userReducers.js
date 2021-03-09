@@ -13,7 +13,7 @@ const initialState = {
 }
 
 export const userLoginReducer = (state = initialState, action) => {
-  switch(action.payload){
+  switch(action.type){
     case USER_LOGIN_REQUEST:
       return {
         ...state,
@@ -23,7 +23,8 @@ export const userLoginReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        userInfo: action.payload
+        userInfo: action.payload,
+        erro: null,
       }
     case USER_LOGIN_FAIL:
       return {
@@ -34,7 +35,6 @@ export const userLoginReducer = (state = initialState, action) => {
     case USER_LOGOUT:
       return {}
       
-
     default:
       return{
         ...state,

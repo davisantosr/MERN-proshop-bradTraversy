@@ -16,6 +16,7 @@ export const login = (email, password) => async dispatch => {
     }
 
     const {data} = await axios.post('http://localhost:5000/api/users/login', {email, password}, config) 
+    console.log(data)
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -28,9 +29,9 @@ export const login = (email, password) => async dispatch => {
 
     dispatch({
       type:USER_LOGIN_FAIL,
-      payload: err.message && error.message.data.message ?
-      error.response.data.message
-      : error.message
+      payload: err.message && err.message.data ?
+      err.response.data.message
+      : err.message
     })
 
   }
